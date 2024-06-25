@@ -1,14 +1,17 @@
-{{! <h3><a data-toggle="tooltip" data-placement= "top" title="'.$course->fullname.'" href="'.$courseurl.'">'.$trimtitle.'</a></h3> }}
-{{! <span data-toggle="tooltip" data-placement="top" title="tooltip testada">
-testando tooltip
-</span> }}
 <div id="block-class_material-{{uniqid}}" data-course-module-id="{{courseModuleId}}">
-    <p>Está atividade não possui material.</p>
+    <div class="document-container">
+        {{^documents}}
+            <p>{{#str}} empty, block_class_material {{/str}}</p>
+        {{/documents}}
+        {{#documents}}
+            {{> block_class_material/file-item }}
+        {{/documents}}
+    </div>
 
 {{#canEdit}}
     <div class="d-flex align-items-center justify-content-center">
         <button class="btn btn-primary" id="add_material">
-            Adicionar
+            {{#str}} add_button, block_class_material {{/str}}
         </button>
     </div>
 {{/canEdit}}

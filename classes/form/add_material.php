@@ -40,10 +40,10 @@ class add_material extends dynamic_form {
         $maxbytes = 10;
         
         $mform = $this->_form;
-        $mform->addElement('text', 'title', get_string('message', 'tool_dataprivacy'), 'cols="60" rows="8"');
+        $mform->addElement('text', 'title', get_string('form_title_field', 'block_class_material'), 'cols="60" rows="8"');
         $mform->setType('title', PARAM_TEXT);
         $mform->addRule('title', get_string('required'), 'required', null, 'client');
-        $mform->addElement('textarea', 'description', get_string('message', 'tool_dataprivacy'), 'cols="60" rows="8"');
+        $mform->addElement('textarea', 'description', get_string('form_description_field', 'block_class_material'), 'cols="60" rows="8"');
         $mform->setType('description', PARAM_TEXT);
         $mform->addRule('description', get_string('required'), 'required', null, 'client');
         $mform->addElement(
@@ -123,11 +123,11 @@ class add_material extends dynamic_form {
             $file->get_filename()
         );
 
-
         return [
-            'fileUrl' => $fileUrl->out(),
-            'fileTitle' => $material->title,
-            'fileDescription' => $material->description
+            'id' => $material->id,
+            'title' => $material->title,
+            'description' => $material->description,
+            'url' => $fileUrl->out(),
         ];
     }
 

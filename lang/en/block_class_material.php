@@ -23,3 +23,14 @@
  */
 
 $string['pluginname'] = 'Class Material';
+$string['save'] = 'Save Document';
+$string['form_title'] = 'Insert new Document';
+$string['form_title_field'] = 'Document Title';
+$string['form_description_field'] = 'Document Description';
+$string['modal_delete_document_title'] = 'Delete Document';
+$string['modal_delete_document_body'] = 'Are you sure you want to delete this document?';
+$string['upload_success'] = 'Upload successful';
+$string['download_file'] = 'Download File';
+$string['delete_file'] = 'Delete File';
+$string['empty'] = 'This activity has no materials.';
+$string['add_button'] = 'Add Material';

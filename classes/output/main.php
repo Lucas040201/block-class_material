@@ -40,10 +40,14 @@ class main implements renderable, templatable
     /** @var boolean $canEdit  */
     private $canEdit;
 
-    public function __construct(int $courseModuleId, bool $canEdit = false)
+    /** @var array $documents */
+    private $documents;
+
+    public function __construct(int $courseModuleId, array $documents, bool $canEdit = false)
     {
         $this->courseModuleId = $courseModuleId;
         $this->canEdit = $canEdit;
+        $this->documents = $documents;
     }
 
     public function export_for_template(renderer_base $output)
@@ -51,7 +55,8 @@ class main implements renderable, templatable
         
         return [
             'canEdit' => $this->canEdit,
-            'courseModuleId' => $this->courseModuleId
+            'courseModuleId' => $this->courseModuleId,
+            'documents' => $this->documents
         ];
     }
 

@@ -1,0 +1,17 @@
+<div class="document-item d-flex align-items-center" data-item-id="{{id}}">
+    <p class="document-item-icon" aria-label="{{title}}" title="{{title}}"><i class="fa-regular fa-file-pdf"></i></p>
+    <div class="document-item-text" aria-label="{{title}}" title="{{title}}">
+        <p>{{title}}</p>
+        <p>{{description}}</p>
+    </div>
+    <div class="document-item-actions d-flex align-items-start">
+        {{#canEdit}}
+            <a class="document-item-actions-button document-item-actions-button-delete text-danger" data-delete-item="{{id}}" aria-label="{{#str}} delete_file, block_class_material {{/str}}" title="{{#str}} delete_file, block_class_material {{/str}}" href="#">
+                <i class="fa-solid fa-trash"></i>
+            </a>
+        {{/canEdit}}
+        <a class="document-item-actions-button document-item-actions-button-download" aria-label="{{#str}} download_file, block_class_material {{/str}}" title="{{#str}} download_file, block_class_material {{/str}}" href="{{url}}" target="_blank" download>
+            <i class="fa-solid fa-download"></i>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+.document-item {
+    gap: 15px;
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.document-item p {
+    margin: 0;
+}
+
+.document-item-icon i {
+    font-size: 24px;
+}
+
+.document-item-text {
+    flex: 2;
+}
+
+
+.document-item-text p {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.document-item-actions.d-flex.align-items-start {
+    gap: 8px;
+}
+
+.document-item-actions-button {
+    border: none;
+    background-color: transparent;
+}

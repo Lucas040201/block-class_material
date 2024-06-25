@@ -23,3 +23,14 @@
  */
 
 $string['pluginname'] = 'Material da Aula';
+$string['save'] = 'Salvar Documento';
+$string['form_title'] = 'Inserir novo Documento';
+$string['form_title_field'] = 'Título do Documento';
+$string['form_description_field'] = 'Descrição do Documento';
+$string['modal_delete_document_title'] = 'Excluir Documento';
+$string['modal_delete_document_body'] = 'Você tem certeza que deseja excluir este documento?';
+$string['upload_success'] = 'Upload realizado com sucesso';
+$string['download_file'] = 'Baixar Arquivo';
+$string['delete_file'] = 'Excluir Arquivo';
+$string['empty'] = 'Esta atividade não possui material.';
+$string['add_button'] = 'Adicionar Material';

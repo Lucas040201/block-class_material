@@ -23,9 +23,12 @@
  */
 
 use block_class_material\output\main;
+use block_class_material\local\constants\FileConfig;
 
 class block_class_material extends block_base
 {
+    /** @var int $courseModuleId */
+    private $courseModuleId;
 
     /**
      * Initialises the block.
@@ -35,6 +38,8 @@ class block_class_material extends block_base
      */
     public function init(): void
     {
+        global $PAGE;
+        $this->courseModuleId = (int)$PAGE->cm->id;
         $this->title = get_string('pluginname', 'block_class_material');
     }
 
@@ -55,9 +60,10 @@ class block_class_material extends block_base
         global $PAGE;
         $courseModuleId = (int)$PAGE->cm->id;
         $canEdit = $this->user_can_edit();
+        $documents = array_values($this->getDocuments());
         $this->content = new \stdClass();
         $renderer = $this->page->get_renderer('block_class_material');
-        $renderable = new main($courseModuleId, $canEdit);
+        $renderable = new main($courseModuleId, $documents, $canEdit);
         $this->content->text = $renderer->render_main($renderable);
     }
 
@@ -81,4 +87,24 @@ class block_class_material extends block_base
         return false;
     }
 
+
+    private function getDocuments()
+    {
+        global $DB;
+
+        return array_map(function ($file) {
+            $file->url = moodle_url::make_pluginfile_url(
+                FileConfig::$context,
+                FileConfig::$blockName, 
+                FileConfig::$fileArea,
+                $file->id, 
+                $file->filepath, 
+                $file->filename
+            )->out();
+    
+            return $file;
+        }, $DB->get_records('block_class_material', [
+            'cmid' => $this->courseModuleId
+        ]));
+    }
 }
