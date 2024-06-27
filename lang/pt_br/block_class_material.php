@@ -34,3 +34,6 @@ $string['download_file'] = 'Baixar Arquivo';
 $string['delete_file'] = 'Excluir Arquivo';
 $string['empty'] = 'Esta atividade não possui material.';
 $string['add_button'] = 'Adicionar Material';
+$string['delete_error'] = 'Erro ao tentar remover arquivo';
+$string['delete_success'] = 'Material removido com Sucesso';
+$string['material_not_found_error'] = 'Material não encontrado';

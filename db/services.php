@@ -15,17 +15,34 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version metadata for the block_class_material plugin.
+ * Languages configuration for the block_class_material plugin.
  *
  * @package   block_class_material
- * @copyright 2024 Lucas Mendes {@link https://www.lucasmendesdev.com.br}
+ * @copyright 2024, Lucas Mendes {@link https://www.lucasmendesdev.com.br}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+use block_class_material\external\file;
 
-$plugin->version = 2024062601;
-$plugin->requires = 2020110300;
-$plugin->component = 'block_class_material';
-$plugin->maturity = MATURITY_STABLE;
-$plugin->release = 1.0;
+$functions = [
+    'block_class_material_delete_file' => [
+        'classname'   => file::class,
+        'methodname'  => 'delete_file',
+        'description' => 'delete a class file',
+        'type'        => 'write',
+        'ajax'          => true,
+    ],
+];
+
+$services = [
+    'block_class_material_web_service'  => [
+        'functions' => [
+            'block_class_material_delete_file'
+        ],
+        'enabled' => 1,
+        'restrictedusers' => 0,
+        'shortname' => 'service_block_class_material',
+        'downloadfiles' => 0,
+        'uploadfiles' => 0
+    ],
+];
