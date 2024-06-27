@@ -1,11 +1,11 @@
 import $ from 'jquery';
 import ModalForm from 'core_form/modalform';
-import {getString} from 'core/str';
+import {get_string as getString} from 'core/str';
 import Templates from 'core/templates';
 import Notification from 'core/notification';
-import ModalDeleteCancel from 'core/modal_delete_cancel';
 import Repository from 'block_class_material/repository';
 import ModalEvents from 'core/modal_events';
+import ModalFactory from 'core/modal_factory';
 
 
 const addItem = root => {
@@ -62,10 +62,10 @@ const loadActions = root => {
     deleteButtons.on('click', async event => {
         event.preventDefault();
         const target = $(event.currentTarget);
-        const modal = await ModalDeleteCancel.create({
+        const modal = await ModalFactory.create({
+            type: ModalFactory.types.DELETE_CANCEL,
             title: await getString('modal_delete_document_title', 'block_class_material'),
             body: await getString('modal_delete_document_body', 'block_class_material'),
-            isVerticallyCentered: true,
         });
         modal.getRoot().off();
         modal.getRoot().on(
