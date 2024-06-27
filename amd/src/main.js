@@ -11,15 +11,15 @@ import ModalEvents from 'core/modal_events';
 const addItem = root => {
     const triggerElement = root.find('#add_material');
     triggerElement.off();
-    triggerElement.on('click', event => {
+    triggerElement.on('click', async event => {
         event.preventDefault();
 
         const modalForm = new ModalForm({
             modalConfig: {
-                title: getString('form_title', 'block_class_material'),
+                title: await getString('form_title', 'block_class_material'),
             },
             formClass: 'block_class_material\\form\\add_material',
-            saveButtonText: getString('save', 'block_class_material'),
+            saveButtonText: await getString('save', 'block_class_material'),
             returnFocus: triggerElement,
         });
 
@@ -63,8 +63,8 @@ const loadActions = root => {
         event.preventDefault();
         const target = $(event.currentTarget);
         const modal = await ModalDeleteCancel.create({
-            title: getString('modal_delete_document_title', 'block_class_material'),
-            body: getString('modal_delete_document_body', 'block_class_material'),
+            title: await getString('modal_delete_document_title', 'block_class_material'),
+            body: await getString('modal_delete_document_body', 'block_class_material'),
             isVerticallyCentered: true,
         });
         modal.getRoot().off();
