@@ -39,11 +39,11 @@ class block_class_material extends block_base
     public function init(): void
     {
         global $PAGE;
+        $this->title = get_string('pluginname', 'block_class_material');
         if(empty($PAGE->cm) || empty($PAGE->cm->id)) {
             return;
         }
         $this->courseModuleId = (int)$PAGE->cm->id;
-        $this->title = get_string('pluginname', 'block_class_material');
     }
 
     /**
