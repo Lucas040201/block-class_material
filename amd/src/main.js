@@ -63,13 +63,16 @@ const loadActions = root => {
         event.preventDefault();
         const target = $(event.currentTarget);
         const modal = await ModalFactory.create({
-            type: ModalFactory.types.DELETE_CANCEL,
+            type: ModalFactory.types.SAVE_CANCEL,
             title: await getString('modal_delete_document_title', 'block_class_material'),
             body: await getString('modal_delete_document_body', 'block_class_material'),
+            buttons: {
+                save: await getString('modal_delete_btn', 'block_class_material'),
+            }
         });
         modal.getRoot().off();
         modal.getRoot().on(
-            ModalEvents.delete,
+            ModalEvents.save,
             async () => {
                 Repository.deleteFile({
                     fileid: Number(target.data('delete-item'))

@@ -37,3 +37,4 @@ $string['add_button'] = 'Adicionar Material';
 $string['delete_error'] = 'Erro ao tentar remover arquivo';
 $string['delete_success'] = 'Material removido com Sucesso';
 $string['material_not_found_error'] = 'Material não encontrado';
+$string['modal_delete_btn'] = 'Excluir';
