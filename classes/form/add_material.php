@@ -37,7 +37,7 @@ class add_material extends dynamic_form {
      * Form definition
      */
     protected function definition() {
-        $maxbytes = 10;
+        $maxbytes = get_config('moodle', 'maxbytes');
         
         $mform = $this->_form;
         $mform->addElement('text', 'title', get_string('form_title_field', 'block_class_material'), 'cols="60" rows="8"');
@@ -53,7 +53,7 @@ class add_material extends dynamic_form {
             null,
             [
                 'maxbytes' => $maxbytes,
-                'accepted_types' => '.pdf',
+                'accepted_types' => ['.pdf', '.doc', '.docx'],
             ]
         );
         $mform->addRule('materialfile', get_string('required'), 'required', null, 'client');
