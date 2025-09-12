@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2024071400;
+$plugin->version = 2025091100;
 $plugin->requires = 2020110300;
 $plugin->component = 'block_class_material';
 $plugin->maturity = MATURITY_STABLE;
