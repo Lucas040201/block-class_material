@@ -43,7 +43,22 @@ class block_class_material extends block_base
         if(empty($PAGE->cm) || empty($PAGE->cm->id)) {
             return;
         }
-        $this->courseModuleId = (int)$PAGE->cm->id;
+        $this->courseModuleId = $this->resolveCmId();
+    }
+
+    private function resolveCmId(): ?int
+    {
+        global $PAGE;
+
+        if (!empty($PAGE->cm->id)) {
+            return (int)$PAGE->cm->id;
+        }
+
+        if ($PAGE->context && $PAGE->context->contextlevel == CONTEXT_MODULE) {
+            return (int)$PAGE->context->instanceid;
+        }
+
+        return null;
     }
 
     /**
