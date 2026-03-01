@@ -99,7 +99,7 @@ class block_class_material extends block_base
             'cmid' => $this->courseModuleId
         ]);
 
-        print_r($files);
+        print_r([$files, $this->courseModuleId]);
 
         return array_map(function ($file) {
             $file->url = moodle_url::make_pluginfile_url(
