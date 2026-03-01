@@ -42,6 +42,19 @@ class block_class_material extends block_base
         $this->title = get_string('pluginname', 'block_class_material');
     }
 
+    /**
+     * Gets the block contents.
+     *
+     * @return stdClass The block HTML.
+     * @throws moodle_exception
+     */
+    public function get_content(): stdClass
+    {
+        $this->courseModuleId = $this->resolveCmId();
+        $this->buildContent();
+        return $this->content;
+    }
+
     private function resolveCmId(): ?int
     {
         global $PAGE;
@@ -55,19 +68,6 @@ class block_class_material extends block_base
         }
 
         return null;
-    }
-
-    /**
-     * Gets the block contents.
-     *
-     * @return stdClass The block HTML.
-     * @throws moodle_exception
-     */
-    public function get_content(): stdClass
-    {
-        $this->courseModuleId = $this->resolveCmId();
-        $this->buildContent();
-        return $this->content;
     }
 
     private function buildContent(): void
@@ -107,12 +107,6 @@ class block_class_material extends block_base
     {
         global $DB;
 
-        $files = $DB->get_records('block_class_material', [
-            'cmid' => $this->courseModuleId
-        ]);
-
-        print_r([$files, $this->courseModuleId]);
-
         return array_map(function ($file) {
             $file->url = moodle_url::make_pluginfile_url(
                 FileConfig::$context,
@@ -122,8 +116,10 @@ class block_class_material extends block_base
                 $file->filepath, 
                 $file->filename
             )->out();
-        print_r($file);
+
             return $file;
-        }, $files);
+        }, $DB->get_records('block_class_material', [
+            'cmid' => $this->courseModuleId
+        ]));
     }
 }
