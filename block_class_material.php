@@ -95,12 +95,6 @@ class block_class_material extends block_base
     {
         global $DB;
 
-        $files = $DB->get_records('block_class_material', [
-            'cmid' => 1428
-        ]);
-
-        print_r([$files, $this->courseModuleId]);
-
         return array_map(function ($file) {
             $file->url = moodle_url::make_pluginfile_url(
                 FileConfig::$context,
@@ -110,8 +104,10 @@ class block_class_material extends block_base
                 $file->filepath, 
                 $file->filename
             )->out();
-        print_r($file);
+
             return $file;
-        }, $files);
+        }, $DB->get_records('block_class_material', [
+            'cmid' => $this->courseModuleId
+        ]));
     }
 }
