@@ -96,7 +96,7 @@ class block_class_material extends block_base
         global $DB;
 
         $files = $DB->get_records('block_class_material', [
-            'cmid' => $this->courseModuleId
+            'cmid' => 1428
         ]);
 
         print_r([$files, $this->courseModuleId]);
