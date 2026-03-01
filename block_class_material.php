@@ -40,10 +40,6 @@ class block_class_material extends block_base
     {
         global $PAGE;
         $this->title = get_string('pluginname', 'block_class_material');
-        if(empty($PAGE->cm) || empty($PAGE->cm->id)) {
-            return;
-        }
-        $this->courseModuleId = $this->resolveCmId();
     }
 
     private function resolveCmId(): ?int
@@ -69,6 +65,7 @@ class block_class_material extends block_base
      */
     public function get_content(): stdClass
     {
+        $this->courseModuleId = $this->resolveCmId();
         $this->buildContent();
         return $this->content;
     }
